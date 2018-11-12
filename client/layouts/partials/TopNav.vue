@@ -19,9 +19,10 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-light">
+            <nuxt-link :to="{ name: 'auth-signin' }" class="button is-light">
               Log in
-            </a>
+            </nuxt-link>
+
             <a class="button is-info">
               Sign up
             </a>
