@@ -33,6 +33,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    './plugins/mixins/user'
   ],
 
   /*
@@ -55,14 +56,14 @@ module.exports = {
   },
 
   auth: {
-    endpoints: {
-      login: {
-        url: 'login', method: 'post', propertyName: 'meta.token'
-      },
-      user: {
-        url: 'me', method: 'get', propertyName: 'data'
-      },
-      logout: {} //
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'meta.token' },
+          logout: {}, //
+          user: { url: 'me', method: 'get', propertyName: 'data' }
+        }
+      }
     }
   },
 
