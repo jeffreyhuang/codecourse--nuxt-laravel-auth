@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar is-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <nuxt-link :to="{ name: 'index' }" class="navbar-item">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-      </a>
+      </nuxt-link>
 
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
@@ -17,30 +17,42 @@
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <nuxt-link :to="{ name: 'auth-signin' }" class="button is-light">
-              Log in
-            </nuxt-link>
+        <no-ssr>
+          <template v-if="!authenticated">
+            <div class="navbar-item">
+              <div class="buttons">
+                <nuxt-link :to="{ name: 'auth-signin' }" class="button is-light">
+                  Log in
+                </nuxt-link>
 
-            <a class="button is-info">
-              Sign up
-            </a>
-          </div>
-        </div>
+                <nuxt-link :to="{ name: 'auth-signup' }" class="button is-info">
+                  Sign up
+                </nuxt-link>
+              </div>
+            </div>
+          </template>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Jeffrey Huang
-          </a>
+          <template v-if="authenticated">
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                {{ user.name }}
+              </a>
 
-          <div class="navbar-dropdown is-right">
-            <a class="navbar-item">
-              Log out
-            </a>
-          </div>
-        </div>
+              <div class="navbar-dropdown is-right">
+                <a class="navbar-item">
+                  Log out
+                </a>
+              </div>
+            </div>
+          </template>
+        </no-ssr>
       </div>
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  //
+}
+</script>

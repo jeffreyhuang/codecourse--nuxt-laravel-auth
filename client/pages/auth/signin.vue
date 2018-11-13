@@ -1,4 +1,3 @@
-
 <template>
   <section class="hero">
     <div class="hero-body">
