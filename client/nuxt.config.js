@@ -33,19 +33,17 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    './plugins/mixins/user'
+    './plugins/mixins/user',
+    './plugins/mixins/validation',
+    './plugins/axios'
   ],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-
     '@nuxtjs/auth',
-
-    // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma'
   ],
   /*
@@ -65,6 +63,12 @@ module.exports = {
         }
       }
     }
+  },
+
+  router: {
+    middleware: [
+      'clearValidationErrors'
+    ]
   },
 
   /*
