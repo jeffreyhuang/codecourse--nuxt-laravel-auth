@@ -60,7 +60,7 @@ module.exports = {
       local: {
         endpoints: {
           login: { url: 'login', method: 'post', propertyName: 'meta.token' },
-          logout: {}, //
+          logout: { url: 'logout', method: 'post' },
           user: { url: 'me', method: 'get', propertyName: 'data' }
         }
       }

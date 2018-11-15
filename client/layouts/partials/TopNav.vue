@@ -39,7 +39,7 @@
               </a>
 
               <div class="navbar-dropdown is-right">
-                <a class="navbar-item">
+                <a class="navbar-item" @click.prevent="logout">
                   Log out
                 </a>
               </div>
@@ -53,6 +53,10 @@
 
 <script>
 export default {
-  //
+  methods: {
+    logout () {
+      this.$auth.logout()
+    }
+  }
 }
 </script>
