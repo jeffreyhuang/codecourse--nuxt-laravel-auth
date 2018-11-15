@@ -10,14 +10,18 @@
               <div class="field">
                 <label for="email" class="label">Email address</label>
                 <div class="control">
-                  <input class="input is-medium" type="email" id="email" v-model="form.email">
+                  <input class="input is-medium" :class="{ 'is-danger': errors.email }" type="email" id="email" v-model="form.email">
+
+                  <p class="help is-danger" v-if="errors.email">{{ errors.email[0] }}</p>
                 </div>
               </div>
 
               <div class="field">
                 <label for="password" class="label">Password</label>
                 <div class="control">
-                  <input class="input is-medium" type="password" id="password" v-model="form.password">
+                  <input class="input is-medium" :class="{ 'is-danger': errors.password }" type="password" id="password" v-model="form.password">
+
+                  <p class="help is-danger" v-if="errors.password">{{ errors.password[0] }}</p>
                 </div>
               </div>
 
@@ -44,7 +48,7 @@ export default {
   },
   methods: {
     async submit () {
-      await this.$auth.login({
+      await this.$auth.loginWith('local', {
         data: this.form
       }),
 
