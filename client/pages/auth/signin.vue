@@ -38,6 +38,7 @@
 
 <script>
 export default {
+  middleware: 'guest',
   data () {
     return {
       form: {
@@ -53,7 +54,7 @@ export default {
       }),
 
       this.$router.push({
-        path: '/'
+        path: this.$route.query.redirect || '/'
       })
     }
   }
