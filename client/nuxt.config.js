@@ -62,12 +62,17 @@ module.exports = {
           user: { url: 'me', method: 'get', propertyName: 'data' }
         }
       }
+    },
+    redirect: {
+      login: '/auth/signin',
+      home: '/'
     }
   },
 
   router: {
     middleware: [
-      'clearValidationErrors'
+      'clearValidationErrors',
+      'guest'
     ]
   },
 
